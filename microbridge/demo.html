@@ -1,0 +1,26 @@
+<html>
+  <style type="text/css">
+    button{height: 50px;
+           width: 50px;}
+  </style>
+
+  <script type="text/javascript">
+    var droid = new Android();
+
+    // Notifies that button has been pressed
+    var ledButton = function(){
+      droid.eventPost("LedButton","");
+    }
+
+    // Shows ADC value
+    var showValue = function(data){
+      document.getElementById('light').innerHTML = data.data;
+    }
+    droid.registerCallback("ADC", showValue);
+  </script>
+
+  <body>
+    <h1 id="light">100</h1>
+    <button onclick="ledButton()">LED</button>
+  </body>
+</html>
